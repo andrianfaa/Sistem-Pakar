@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+
+:root {
+  --primary: #f59e0b;
+  --primary-dark: #b45309;
+  --background: #f8f9fa;
+  --foreground: #343a40;
+  --heading-color: #09090b;
+  --text-color: #495057;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-heading: var(--heading-color);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-size-lg: 18px;
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+  --font-size-xs: 12px;
+}
+
+body {
+  background: var(--background);
+  color: var(--text-color);
+  font-family: var(--font-sans);
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+  @apply w-full max-w-4xl lg:max-w-5xl;
+}
+
+/* Heading styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-weight: 600;
+  @apply tracking-tighter;
+}
+
+h1 {
+  font-size: 2rem; /* 32px */
+}
+
+h2 {
+  font-size: 1.75rem; /* 28px */
+}
+
+h3 {
+  font-size: 1.5rem; /* 24px */
+}
+
+h4 {
+  font-size: 1.25rem; /* 20px */
+}
+
+h5 {
+  font-size: 1.125rem; /* 18px */
+}
+
+h6 {
+  font-size: 1rem; /* 16px */
+}
