@@ -1,7 +1,10 @@
+import dbConnect from "@/libs/mongodb";
 import User from "@/models/User";
 import { RegisterSchema } from "@/schemas/auth";
 
 export async function POST(request: Request) {
+  await dbConnect();
+
   try {
     const data = await request.json();
 
