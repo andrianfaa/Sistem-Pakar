@@ -32,6 +32,8 @@ export async function insertRule(formData: FormData) {
       error: undefined
     };
   } catch (error) {
+    console.error(error);
+
     if (error && typeof error === "object" && "code" in error && error.code === 11000) {
       return {
         success: false,
@@ -80,6 +82,8 @@ export async function updateRule(formData: FormData) {
       error: undefined
     };
   } catch (error) {
+    console.error(error);
+
     if (error && typeof error === "object" && "code" in error && error.code === 11000) {
       return {
         success: false,
@@ -112,6 +116,8 @@ export async function deleteRule(id: string) {
       error: undefined
     };
   } catch (error) {
+    console.error(error);
+
     return {
       success: false,
       error: error instanceof Error ? error.message : "Terjadi kesalahan saat menghapus data aturan. Silakan coba lagi."

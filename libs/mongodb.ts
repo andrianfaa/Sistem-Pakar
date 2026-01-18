@@ -8,10 +8,13 @@ async function dbConnect() {
   }
 
   if (mongoose.connection.readyState >= 1) {
+    console.log("MongoDB connected");
     return;
   }
 
   await mongoose.connect(mongoURI);
+
+  console.log("MongoDB connected");
 
   return mongoose;
 }

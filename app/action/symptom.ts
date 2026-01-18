@@ -28,6 +28,8 @@ export async function insertSymptom(formData: FormData) {
       error: undefined
     };
   } catch (error) {
+    console.error(error);
+
     if (error && typeof error === "object" && "code" in error && error.code === 11000) {
       return {
         success: false,
@@ -72,6 +74,8 @@ export async function updateSymptom(formData: FormData) {
       error: undefined
     };
   } catch (error) {
+    console.error(error);
+
     if (error && typeof error === "object" && "code" in error && error.code === 11000) {
       return {
         success: false,
@@ -104,6 +108,8 @@ export async function deleteSymptom(id: string) {
       error: undefined
     };
   } catch (error) {
+    console.error(error);
+
     return {
       success: false,
       error: error instanceof Error ? error.message : "Terjadi kesalahan saat menghapus data gejala. Silakan coba lagi."

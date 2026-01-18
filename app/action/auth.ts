@@ -39,6 +39,8 @@ export async function login(formData: FormData) {
       error: undefined
     };
   } catch (error) {
+    console.error(error);
+
     return {
       success: false,
       error: error instanceof Error ? error.message : "Terjadi kesalahan saat proses login. Silakan coba lagi."

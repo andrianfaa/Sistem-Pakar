@@ -28,6 +28,8 @@ export async function insertDisease(formData: FormData) {
       error: undefined
     };
   } catch (error) {
+    console.error(error);
+
     if (error && typeof error === "object" && "code" in error && error.code === 11000) {
       return {
         success: false,
@@ -73,6 +75,8 @@ export async function updateDisease(formData: FormData) {
       error: undefined
     };
   } catch (error) {
+    console.error(error);
+
     if (error && typeof error === "object" && "code" in error && error.code === 11000) {
       return {
         success: false,
@@ -105,6 +109,8 @@ export async function deleteDisease(id: string) {
       error: undefined
     };
   } catch (error) {
+    console.error(error);
+
     return {
       success: false,
       error:
