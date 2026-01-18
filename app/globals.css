@@ -2,8 +2,8 @@
 @plugin "@tailwindcss/forms";
 
 :root {
-  --primary: #f59e0b;
-  --primary-dark: #b45309;
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
   --background: #f8f9fa;
   --foreground: #343a40;
   --heading-color: #09090b;
@@ -34,6 +34,11 @@ button {
   font-family: var(--font-sans);
   cursor: pointer;
   @apply transition-all duration-200 ease-in-out;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  @apply opacity-50;
 }
 
 .container {

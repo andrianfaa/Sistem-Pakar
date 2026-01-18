@@ -1,36 +1,133 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Expert System for Diagnosing Pests and Diseases in Rice Plants Using Forward Chaining and Certainty Factor Methods
 
-## Getting Started
+## About
 
-First, run the development server:
+This project is an implementation of an expert system based on research presented at the CORISINDO conference. The system leverages artificial intelligence techniques, specifically Forward Chaining for logical inference and Certainty Factor for handling uncertainty in diagnosis. By combining these methodologies, the application provides accurate and reliable diagnoses of rice plant pests and diseases, helping farmers and agricultural professionals make informed decisions to protect their crops.
+
+The research paper that inspired this implementation can be found at: [https://corisindo.utb-univ.ac.id/index.php/penelitian/article/view/111](https://corisindo.utb-univ.ac.id/index.php/penelitian/article/view/111)
+
+## Features
+
+- User authentication and authorization
+- Disease diagnosis based on symptoms
+- Knowledge base management
+- CRUD Disease data (Create, Read, Update, Delete disease data)
+- CRUD Symptom data (Create, Read, Update, Delete symptom data)
+- CRUD Rule data (Create, Read, Update, Delete rule data)
+
+## Installation
+
+### Prerequisites
+
+Before you begin, make sure you have Node.js installed on your system.
+
+#### Installing Node.js
+
+1. Visit the official Node.js website at [https://nodejs.org](https://nodejs.org)
+2. Download Node.js version 24.12.0 or newer
+3. Run the installer and follow the installation wizard
+4. Verify the installation by opening a terminal and running:
+
+```bash
+node --version
+npm --version
+```
+
+### Steps
+
+```bash
+# Clone the repository
+git clone https://github.com/andrianfaa/Sistem-Pakar.git && cd Sistem-Pakar
+
+# Install dependencies
+npm install
+```
+
+### Environment Configuration
+
+After installing dependencies, create a `.env.local` file in the root directory of your project:
+
+```bash
+# Create .env.local file
+touch .env.local
+```
+
+Add the following environment variables to your `.env.local` file:
+
+```env
+URL=http://localhost:3000
+SECRET_KEY=your-secret-key-here
+MONGODB_URI=your-mongodb-connection-string
+```
+
+**Important:** Replace the placeholder values with your actual configuration:
+
+- `URL`: Your application URL (use `http://localhost:3000` for development)
+- `SECRET_KEY`: A secure random string for encryption/authentication
+- `MONGODB_URI`: Your MongoDB connection string
+
+> **Note:** Never commit your `.env.local` file to version control. Make sure it's listed in your `.gitignore` file.
+
+## Usage
+
+### Development
+
+To run the application in development mode:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To run the application in production mode:
 
-## Learn More
+```bash
+# Build the application
+npm run build
 
-To learn more about Next.js, take a look at the following resources:
+# Start the production server
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The application will run on the URL specified in your `.env.local` file.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Important Notes
 
-## Deploy on Vercel
+If you fork this project and need to create an initial user account, you must manually call the user creation API endpoint:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Endpoint:** `POST /api/user`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Request Body Example:**
+
+```json
+{
+  "name": "Admin",
+  "email": "admin@anfa.my.id",
+  "username": "admin",
+  "password": "Admin@123"
+}
+```
+
+> **Note:** The example above is just a template. You can customize the user data according to your needs. Make sure to use a strong password for security purposes.
+
+> **Security Warning:** Before building for production, make sure to delete the `/api/user` folder to prevent unauthorized user creation. This endpoint should only be used during initial setup and should be removed to avoid potential security risks.
+
+## Technologies Used
+
+- **[Next.js](https://nextjs.org/)** - React framework for production
+- **[React](https://reactjs.org/)** - JavaScript library for building user interfaces
+- **[MongoDB](https://www.mongodb.com/)** - NoSQL database for data storage
+- **[Jose](https://github.com/panva/jose)** - JavaScript module for JSON Web Tokens (JWT) authentication and authorization
+- **[Zod](https://zod.dev/)** - TypeScript-first schema validation library
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework for styling
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License.
