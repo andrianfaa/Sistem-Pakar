@@ -1,5 +1,6 @@
 "use server";
 
+import dbConnect from "@/libs/mongodb";
 import { createSession, deleteSession } from "@/libs/session";
 import User from "@/models/User";
 import { LoginSchema, RegisterSchema } from "@/schemas/auth";
@@ -7,6 +8,8 @@ import { redirect } from "next/navigation";
 import crypto from "node:crypto";
 
 export async function login(formData: FormData) {
+  await dbConnect();
+
   try {
     const rawUsername = String(formData.get("username") ?? "");
     const rawPassword = String(formData.get("password") ?? "");

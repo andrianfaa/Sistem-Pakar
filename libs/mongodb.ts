@@ -7,10 +7,10 @@ async function dbConnect() {
     throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
   }
 
-  // if (mongoose.connection.readyState >= 1) {
-  //   console.log("MongoDB connected");
-  //   return;
-  // }
+  if (mongoose.connection.readyState >= 1) {
+    console.log("MongoDB already connected");
+    return;
+  }
 
   await mongoose.connect(mongoURI);
 
