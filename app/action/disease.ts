@@ -1,9 +1,12 @@
 "use server";
 
+import dbConnect from "@/libs/mongodb";
 import Disease from "@/models/Disease";
 import { DiseaseSchema } from "@/schemas/disease";
 
 export async function insertDisease(formData: FormData) {
+  await dbConnect();
+
   try {
     const code = String(formData.get("code") ?? "").toUpperCase();
     const name = String(formData.get("name") ?? "");
@@ -46,6 +49,8 @@ export async function insertDisease(formData: FormData) {
 }
 
 export async function updateDisease(formData: FormData) {
+  await dbConnect();
+
   try {
     const id = String(formData.get("id") ?? "");
     const code = String(formData.get("code") ?? "").toUpperCase();
@@ -93,6 +98,8 @@ export async function updateDisease(formData: FormData) {
 }
 
 export async function deleteDisease(id: string) {
+  await dbConnect();
+
   try {
     if (!id) {
       throw new Error("ID penyakit tidak valid.");

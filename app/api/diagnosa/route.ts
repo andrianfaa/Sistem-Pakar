@@ -1,10 +1,13 @@
 import normalizeMongoDoc from "@/helpers/normalizeMongoDoc";
+import dbConnect from "@/libs/mongodb";
 import Rule, { type TRule, type TRulePopulated } from "@/models/Rule";
 import Symptom, { type TSymptom } from "@/models/Symptom";
 import { DiagnoseInputSchema } from "@/schemas/diagnose";
 import type { MongoDoc } from "@/types";
 
 export async function POST(request: Request) {
+  await dbConnect();
+
   try {
     const data = await request.json();
 

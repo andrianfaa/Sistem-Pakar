@@ -52,6 +52,8 @@ export async function login(formData: FormData) {
 }
 
 export async function register(formData: FormData) {
+  await dbConnect();
+
   try {
     const rawName = String(formData.get("name") ?? "");
     const rawEmail = String(formData.get("email") ?? "");

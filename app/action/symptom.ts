@@ -1,9 +1,12 @@
 "use server";
 
+import dbConnect from "@/libs/mongodb";
 import Symptom from "@/models/Symptom";
 import { SymptomSchema } from "@/schemas/symptom";
 
 export async function insertSymptom(formData: FormData) {
+  await dbConnect();
+
   try {
     const code = String(formData.get("code") ?? "").toUpperCase();
     const name = String(formData.get("name") ?? "");
@@ -45,6 +48,8 @@ export async function insertSymptom(formData: FormData) {
 }
 
 export async function updateSymptom(formData: FormData) {
+  await dbConnect();
+
   try {
     const id = String(formData.get("id") ?? "");
     const code = String(formData.get("code") ?? "").toUpperCase();
@@ -92,6 +97,8 @@ export async function updateSymptom(formData: FormData) {
 }
 
 export async function deleteSymptom(id: string) {
+  await dbConnect();
+
   try {
     if (!id) {
       throw new Error("ID gejala tidak valid.");

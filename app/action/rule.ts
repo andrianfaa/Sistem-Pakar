@@ -1,9 +1,12 @@
 "use server";
 
+import dbConnect from "@/libs/mongodb";
 import Rule from "@/models/Rule";
 import { RuleSchema } from "@/schemas/rule";
 
 export async function insertRule(formData: FormData) {
+  await dbConnect();
+
   try {
     const ruleId = String(formData.get("ruleId") ?? "");
     const diseaseId = String(formData.get("diseaseId") ?? "");
@@ -49,6 +52,8 @@ export async function insertRule(formData: FormData) {
 }
 
 export async function updateRule(formData: FormData) {
+  await dbConnect();
+
   try {
     const id = String(formData.get("id") ?? "");
     const ruleId = String(formData.get("ruleId") ?? "");
@@ -100,6 +105,8 @@ export async function updateRule(formData: FormData) {
 }
 
 export async function deleteRule(id: string) {
+  await dbConnect();
+
   try {
     if (!id) {
       throw new Error("ID aturan tidak valid.");
