@@ -29,13 +29,13 @@ const RuleSchema = new Schema<TRule>(
     },
     disease_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Disease",
+      ref: "disease",
       required: true
     },
     symptom_ids: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Symptom",
+        ref: "symptom",
         required: true
       }
     ]
