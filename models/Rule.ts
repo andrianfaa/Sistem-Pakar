@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-import { type TDisease } from "./Disease";
-import { type TSymptom } from "./Symptom";
+import Disease, { type TDisease } from "./Disease";
+import Symptom, { type TSymptom } from "./Symptom";
 
 export type TRule = {
   id?: mongoose.Types.ObjectId;
@@ -29,13 +29,13 @@ const RuleSchema = new Schema<TRule>(
     },
     disease_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "disease",
+      ref: Disease,
       required: true
     },
     symptom_ids: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "symptom",
+        ref: Symptom,
         required: true
       }
     ]

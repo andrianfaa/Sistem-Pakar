@@ -21,7 +21,6 @@ export default function ExpertRuleModal({ rule, diseases, symptoms, onClose }: E
   const [selected, setSelected] = useState<string[]>(
     rule ? rule.symptom_ids.map((symptom) => symptom.id?.toString()).filter((id): id is string => Boolean(id)) : []
   );
-
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 

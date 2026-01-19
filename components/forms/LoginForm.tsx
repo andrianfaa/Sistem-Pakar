@@ -46,7 +46,7 @@ export default function LoginForm() {
         <Input name="password" label="Password" type="password" inputClassName="py-3 px-4 mb-4" disabled={isLoading} />
 
         <Button type="submit" className="py-3 px-4 w-full" disabled={isLoading}>
-          Login
+          {isLoading ? "Memproses..." : "Masuk"}
         </Button>
       </form>
     </div>
