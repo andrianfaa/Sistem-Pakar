@@ -1,5 +1,6 @@
 import normalizeMongoDoc from "@/helpers/normalizeMongoDoc";
 import dbConnect from "@/libs/mongodb";
+import Disease from "@/models/Disease";
 import Rule, { type TRule, type TRulePopulated } from "@/models/Rule";
 import Symptom, { type TSymptom } from "@/models/Symptom";
 import { DiagnoseInputSchema } from "@/schemas/diagnose";
@@ -48,7 +49,16 @@ export async function POST(request: Request) {
     }
 
     const [rawRules, rawSymptoms] = await Promise.all([
-      Rule.find().populate("disease_id").populate("symptom_ids").lean(),
+      Rule.find()
+        .populate({
+          path: "disease_id",
+          model: Disease
+        })
+        .populate({
+          path: "symptom_ids",
+          model: Symptom
+        })
+        .lean(),
       Symptom.find().lean()
     ]);
 

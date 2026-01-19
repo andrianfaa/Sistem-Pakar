@@ -10,7 +10,17 @@ const fetchExpertRules = async () => {
   await dbConnect();
 
   const [rules, diseases, symptoms] = await Promise.all([
-    Rule.find().sort({ createdAt: -1 }).lean<MongoDoc<TRule>[]>().populate("disease_id").populate("symptom_ids"),
+    Rule.find()
+      .sort({ createdAt: -1 })
+      .lean<MongoDoc<TRule>[]>()
+      .populate({
+        path: "disease_id",
+        model: Disease
+      })
+      .populate({
+        path: "symptom_ids",
+        model: Symptom
+      }),
     Disease.find().lean<MongoDoc<TDisease>[]>(),
     Symptom.find().lean<MongoDoc<TSymptom>[]>()
   ]);
